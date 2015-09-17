@@ -14,6 +14,7 @@ import {CORE_DIRECTIVES, FORM_DIRECTIVES} from 'angular2/angular2';
 import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {ShopHeader} from './shop-header';
+import {ShopFooter} from './shop-footer';
 
 /*
  * Directive
@@ -44,7 +45,7 @@ class XLarge {
 @View({
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
-  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, XLarge, ShopHeader ],
+  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, XLarge, ShopHeader, ShopFooter ],
   // Our list of styles in our component. We may add more to compose many styles together
   styles: [`
     main {
@@ -72,9 +73,7 @@ class XLarge {
 
   </main>
 
-  <footer>
-    WebPack Angular 2 Starter by <a href="https://twitter.com/AngularClass">@AngularClass</a>
-  </footer>
+  <shop-footer />
   `
 })
 export class App {
