@@ -33,6 +33,16 @@ For example:
 If the value of the `(input)` is not a function, evaluate it the same way you do today.
 If it is a function, assume it's a method and call it, passing the `$event` as the first argument.
 
+I couldn't find any documentation that shows how to map the `events` values to `EventEmitter` properties, that have to be instantiated and then triggered with `next()`.
+Besides the docs, it seems really cumbersome.
+That's a lot of code to fire a simple event!
+
+Anyway, I wanted to expose an event named `titleChanged`.
+That means adding a `titleChanged: EventEmitter` to the class.
+When the `(input)` fires, I specify an event handler named `titleChangedInternal` to avoid a naming conflict.
+I don't know if there's really a way to work around this, but I imagine we'll be seeing a lot of `xyzInternal` to solve this.
+I think it indicates a problem.
+
 ## Getting Stuck Often
 
 Along the way, I got stuck on a lot of little issues, including:
