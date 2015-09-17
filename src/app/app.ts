@@ -15,6 +15,7 @@ import {ROUTER_DIRECTIVES} from 'angular2/router';
 
 import {ShopHeader} from './shop-header';
 import {ShopFooter} from './shop-footer';
+import {ShopBody} from "./shop-body";
 
 /*
  * Directive
@@ -45,7 +46,11 @@ class XLarge {
 @View({
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
-  directives: [ CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES, XLarge, ShopHeader, ShopFooter ],
+  directives: [
+    CORE_DIRECTIVES, FORM_DIRECTIVES, ROUTER_DIRECTIVES,
+    XLarge,
+    ShopHeader, ShopFooter, ShopBody
+  ],
   // Our list of styles in our component. We may add more to compose many styles together
   styles: [`
     main {
@@ -56,22 +61,7 @@ class XLarge {
   template: `
   <shop-header [title]="title"></shop-header>
 
-  <main>
-    Your Content Here
-    <div>
-
-      <input type="text" [value]="title" (input)="title = $event.target.value" autofocus>
-      <!--
-        Rather than wiring up two-way data-binding ourselves
-        we can use Angular's [(ng-model)] syntax
-        <input type="text" [(ng-model)]="title">
-      -->
-    </div>
-
-    <pre>this.title = {{ title | json }}</pre>
-    <pre>this.data = {{ data | json }}</pre>
-
-  </main>
+  <shop-body title="title" (titlechanged)="onTitleChanged($event)"></shop-body>
 
   <shop-footer></shop-footer>
   `
@@ -106,6 +96,10 @@ export class App {
         // onError callback
         err  => this.errorMessage(err)
       );//end http
+  }
+
+  onTitleChanged(value) {
+    this.title = value;
   }
 
   serverData(data) {
