@@ -73,7 +73,7 @@ class XLarge {
 
   </main>
 
-  <shop-footer />
+  <shop-footer></shop-footer>
   `
 })
 export class App {
