@@ -22,6 +22,17 @@ Figuring out how to create and propagate custom events was pretty difficult.
 In a simple case of two sibling components hosted in one parent, propagating a change between the two components takes a lot of steps.
 There are also no good examples for custom event propagation anywhere.
 
+Figuring out where to put the `$event` was tricky.
+One idea that might help is to support function name syntax for handlers.
+For example:
+
+```
+<input (input)="inputChanged" />
+```
+
+If the value of the `(input)` is not a function, evaluate it the same way you do today.
+If it is a function, assume it's a method and call it, passing the `$event` as the first argument.
+
 ## Getting Stuck Often
 
 Along the way, I got stuck on a lot of little issues, including:
